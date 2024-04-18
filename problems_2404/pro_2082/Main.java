@@ -42,7 +42,6 @@ public class Main {
 	static int findNumber(char[][] target) {
 		for (int i = 0; i < 9; i++) {
 			if (check(target, numbers.get(i))) {
-				System.out.println(i);
 				return i;
 			}
 		}// 굳이 9번째 순회를 돌 필요는 없음.
