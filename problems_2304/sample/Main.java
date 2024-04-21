@@ -26,18 +26,20 @@ public class Main {
 
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		n = Integer.parseInt(st.nextToken());
-		st = new StringTokenizer(br.readLine(), " ");
 
-		while (st.hasMoreTokens()){
-			int index = Integer.parseInt(st.nextToken());
-			int h = Integer.parseInt(st.nextToken());
-			map.put(index,h);
-			max = Math.max(max,h);
-			if (max == h) {
-				maxIndex = index;
-			}
+		while (br.ready()) {
 			st = new StringTokenizer(br.readLine(), " ");
+			while (st.hasMoreTokens()){
+				int index = Integer.parseInt(st.nextToken());
+				int h = Integer.parseInt(st.nextToken());
+				map.put(index,h);
+				max = Math.max(max,h);
+				if (max == h) {
+					maxIndex = index;
+				}
+			}
 		}
+
 
 		Set<Integer> set = map.keySet();
 
@@ -50,7 +52,9 @@ public class Main {
 		int lVal = map.get(left);
 		int right = list.get(list.size()-1);
 		int rVal = map.get(right);
-		for (int i = 1; i < list.size(); i++) {
+
+		// 왼쪽에서 출발해 더 높은 기둥을 만날때까지 block 탐색, max였던 기둥까지만 탐색.
+		for (int i = 0; i < list.size(); i++) {
 			int index = list.get(i);
 			int value = map.get(index);
 			result += lVal * (index-left);
@@ -59,7 +63,8 @@ public class Main {
 			if (index==maxIndex) break;
 		}
 
-		for (int i = list.size()-1; i >= 0; i--) {
+		//이번엔 오른쪽에서 출발해 더 높은 기둥 만날때까지 block 탐색, max였던 기둥까지만 탐색.
+		for (int i = list.size()-1; i > 0; i--) {
 			int index = list.get(i);
 			int value = map.get(index);
 			result += rVal * (right-index);
@@ -67,11 +72,15 @@ public class Main {
 			rVal = Math.max(rVal, value);
 			if (index==maxIndex) break;
 		}
+		//마지막으로, max인 기둥 자신의 넓이를 추가한다.
 		result += max;
 
-//		bw.write(String.valueOf(result));
 
-		System.out.print(result);
+//		if (n==1) {
+//			result = max;
+//		}
+
+		bw.write(String.valueOf(result));
 
 
 		bw.flush();
