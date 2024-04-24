@@ -43,8 +43,8 @@ public class Main {
 	}
 
 	public static void findArrays(int strike, int ball, int attackNumber, Set<Integer> targets, List<Integer> deletes) {
-		System.out.println("strike : " + strike);
-		System.out.println("ball : " + ball);
+//		System.out.println("strike : " + strike);
+//		System.out.println("ball : " + ball);
 		// 공격자 숫자에서, strike, ball이 불가능한 모든 문자열을 지운다.
 		int nowS = 0;
 		int nowB = 0;
@@ -54,16 +54,18 @@ public class Main {
 				for (int j = 0; j < 3; j++) {
 					if (getNumber(i,attackNumber) == getNumber(i,test)) {
 						nowS++;
+						break;
 					} else if (getNumber(i,attackNumber) == getNumber(j,test)) {
 						nowB++;
+						break;
 					}
 				}
 			}
 			if (!(nowB==ball && nowS==strike)) {
-				System.out.println(test + "가 같습니다! "+nowS+" / "+nowB);
+//				System.out.println(test + "가 같습니다! "+nowS+" / "+nowB);
 				deletes.add(test);
 			} else {
-				System.out.println("살아남았습니다 : " + test);
+//				System.out.println("살아남았습니다 : " + test);
 			}
 			nowB = 0;
 			nowS = 0;
