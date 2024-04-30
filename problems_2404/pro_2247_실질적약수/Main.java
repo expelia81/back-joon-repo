@@ -1,4 +1,4 @@
-package problems_2404.pro_2247;
+package problems_2404.pro_2247_실질적약수;
 
 import java.io.*;
 import java.util.*;
