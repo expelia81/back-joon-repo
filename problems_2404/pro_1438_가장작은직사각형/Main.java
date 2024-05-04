@@ -1,4 +1,4 @@
-package problems_2404.pro_1438;
+package problems_2404.pro_1438_가장작은직사각형;
 
 import java.io.*;
 import java.util.ArrayList;
