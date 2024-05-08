@@ -1,7 +1,6 @@
-package problems_2404.pro_2447;
+package problems_2404.pro_2447_별그리기;
 
 import java.io.*;
-import java.util.StringTokenizer;
 
 public class Main {
 	public static boolean[][] arr;
