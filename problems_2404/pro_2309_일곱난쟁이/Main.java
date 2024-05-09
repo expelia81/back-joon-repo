@@ -1,4 +1,4 @@
-package problems_2404.pro_2309;
+package problems_2404.pro_2309_일곱난쟁이;
 
 import java.io.*;
 import java.util.Arrays;
