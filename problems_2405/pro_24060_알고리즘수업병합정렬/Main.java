@@ -1,7 +1,6 @@
-package sample;
+package problems_2405.pro_24060_알고리즘수업병합정렬;
 
 import java.io.*;
-import java.util.Base64;
 import java.util.StringTokenizer;
 
 public class Main {
