@@ -1,4 +1,4 @@
-package problems_2405.pro_24060_알고리즘수업병합정렬;
+package problems_2405.pro_1260_DFS와BFS;
 
 import java.io.*;
 import java.util.StringTokenizer;
@@ -12,6 +12,9 @@ public class Main {
 		int n = Integer.parseInt(br.readLine());
 
 		StringTokenizer st = new StringTokenizer(br.readLine());
+
+		int x = Integer.parseInt(st.nextToken());
+		int y = Integer.parseInt(st.nextToken());
 
 		bw.flush();
 		br.close();
