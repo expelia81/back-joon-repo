@@ -11,7 +11,7 @@ public class Main {
 
 		int n = Integer.parseInt(br.readLine());
 
-		StringTokenizer st = new StringTokenizer(br.readLine());
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
 		int x = Integer.parseInt(st.nextToken());
 		int y = Integer.parseInt(st.nextToken());

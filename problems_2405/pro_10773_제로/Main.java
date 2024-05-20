@@ -1,6 +1,7 @@
-package problems_2405.pro_1260_DFS와BFS;
+package problems_2405.pro_10773_제로;
 
 import java.io.*;
+import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -11,10 +12,20 @@ public class Main {
 
 		int n = Integer.parseInt(br.readLine());
 
-		StringTokenizer st = new StringTokenizer(br.readLine());
-
-		int x = Integer.parseInt(st.nextToken());
-		int y = Integer.parseInt(st.nextToken());
+		Stack<Integer> stack = new Stack<>()	;
+		for (int i = 0; i < n; i++) {
+			int val = Integer.parseInt(br.readLine());
+			if (val==0) {
+				stack.pop();
+			} else {
+				stack.push(val);
+			}
+		}
+		int result = 0;
+		for (int i : stack) {
+			result+=i;
+		}
+		bw.write(String.valueOf(result));
 
 		bw.flush();
 		br.close();
