@@ -1,6 +1,7 @@
-package problems_2405.pro_24511_queuestack;
+package problems_2405.pro_24511_queuestack.second;
 
 import java.io.*;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -20,8 +21,7 @@ public class Main {
 		isQueue = new boolean[n];
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
-		Queue<Integer> queue = new LinkedList<>();
-
+		Deque<Integer> deque = new LinkedList<>();
 		for (int i = 0; i < n; i++) {
 			if (st.nextToken().equals("0")) {
 				isQueue[i]=true;
@@ -29,25 +29,28 @@ public class Main {
 				isQueue[i]=false;
 			}
 		}
-		st = new StringTokenizer(br.readLine(), " ");
 		stackQueue = new int[n];
+		st = new StringTokenizer(br.readLine(), " ");
 		for (int i = 0; i < n; i++) {
 			stackQueue[i]=Integer.parseInt(st.nextToken());
 		}
+
+
+		for (int i = 0; i < n; i++) {
+			if (isQueue[i]) {
+				deque.addLast(stackQueue[i]);
+			}
+		}
+
 		int k = Integer.parseInt(br.readLine());
 		st = new StringTokenizer(br.readLine(), " ");
 		for (int i = 0; i < k; i++) {
-			int input = Integer.parseInt(st.nextToken());
-			for (int j = 0; j < n; j++) {
-				int inValue = stackQueue[j];
-				if (isQueue[j]) {
-					stackQueue[j]=input;
-					input = inValue;
-				}
-			}
-			bw.write(input+" ");
+		  deque.addFirst(Integer.parseInt(st.nextToken()));
 		}
 
+		for (int i = 0; i < k; i++) {
+			bw.write(deque.pollLast()+" ");
+		}
 
 
 		bw.flush();
