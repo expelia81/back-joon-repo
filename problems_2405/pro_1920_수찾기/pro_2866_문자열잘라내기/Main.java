@@ -19,6 +19,11 @@ public class Main {
 		int x = Integer.parseInt(st.nextToken());
 		int y = Integer.parseInt(st.nextToken());
 
+		if (x==2) {
+			System.out.println(0);
+			return;
+		}
+
 		chars = new char[x][y];
 
 		for (int i = 0; i < x; i++) {
@@ -33,9 +38,6 @@ public class Main {
 		while (left<=right) {
 			int mid = (left+right)/2;
 			boolean isPass = canPass(mid);
-			if(mid==chars.length) {
-				break;
-			}
 
 			if (isPass) {
 				left = mid+1;
@@ -51,6 +53,7 @@ public class Main {
 	}
 
 	private static boolean canPass(int mid) {
+		System.out.println("input mid : " + mid);
 		set.clear();
 		for (int i = 0; i < chars[0].length; i++) {
 			StringBuilder sb = new StringBuilder();
