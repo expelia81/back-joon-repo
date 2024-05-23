@@ -21,7 +21,7 @@ public class Main {
 		int k = Integer.parseInt(br.readLine());
 		st = new StringTokenizer(br.readLine(), " ");
 		int[] targets = new int[k];
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i < k; i++) {
 			targets[i] = Integer.parseInt(st.nextToken());
 		}
 		Arrays.sort(arr);
@@ -42,9 +42,6 @@ public class Main {
 				} else {
 					left = mid+1;
 				}
-			}
-			if (arr[(left+right)/2]==target) {
-				result=true;
 			}
 			bw.write(result ? "1" : "0");
 			bw.flush();
