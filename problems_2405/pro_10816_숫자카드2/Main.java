@@ -1,6 +1,7 @@
-package sample;
+package problems_2405.pro_10816_숫자카드2;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -13,14 +14,15 @@ public class Main {
 
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
-		/* 여러 정수 쓰는 경우 */
-		int x = Integer.parseInt(st.nextToken());
-		int y = Integer.parseInt(st.nextToken());
-
-		/* 배열 필요한 경우 */
-		int[] arr = new int[n];
-		for (int j = 0; j < n; j++) {
-			arr[j]=Integer.parseInt(st.nextToken());
+		int[] cards = new int[20000001];
+		for (int i = 0; i < n; i++) {
+			int a=Integer.parseInt(st.nextToken())+10000000;
+			cards[a] += 1;
+		}
+		int m = Integer.parseInt(br.readLine());
+		st = new StringTokenizer(br.readLine()," ");
+		for (int i = 0; i < m; i++) {
+			bw.write(cards[Integer.parseInt(st.nextToken()) + 10000000] +" ");
 		}
 
 		bw.flush();
