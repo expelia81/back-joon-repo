@@ -21,6 +21,7 @@ public class Main {
 		bw.write(a%b+"\n");
 
 
+
 		bw.flush();
 		br.close();
 		bw.close();
