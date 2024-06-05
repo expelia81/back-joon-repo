@@ -9,18 +9,20 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-		int n = Integer.parseInt(br.readLine());
+		String s = br.readLine();
 
-		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-
-		/* 여러 정수 쓰는 경우 */
-		int x = Integer.parseInt(st.nextToken());
-		int y = Integer.parseInt(st.nextToken());
-
-		/* 배열 필요한 경우 */
-		int[] arr = new int[n];
-		for (int j = 0; j < n; j++) {
-			arr[j]=Integer.parseInt(st.nextToken());
+		int sCount = 0;
+		int kCount = 0;
+		int[] sArr = new int[s.length()];
+		int[] kArr = new int[s.length()];
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == 'S') {
+				sCount++;
+			} else if (s.charAt(i) == 'K') {
+				kCount++;
+			}
+			sArr[i] = sCount;
+			kArr[i] = kCount;
 		}
 
 		bw.flush();
