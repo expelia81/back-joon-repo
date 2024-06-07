@@ -15,33 +15,28 @@ public class Main {
 
 		/* 여러 정수 쓰는 경우 */
 		int n = Integer.parseInt(st.nextToken());
-		int value = Integer.parseInt(st.nextToken());
+		long value = Integer.parseInt(st.nextToken());
 
 
 		/* 배열 필요한 경우 */
 		long sum = 0;
 		Map<Long, Long> gap = new HashMap<>();
+		long[] sums = new long[n];
 		st = new StringTokenizer(br.readLine(), " ");
+		long result = 0;
 		for (int j = 0; j < n; j++) {
 			sum+=Integer.parseInt(st.nextToken());
-			long gapValue = value - sum;
+			long gapValue = sum;
+			sums[j]=sum;
+			if (sum==value){
+				result++;
+			}
+			if (gap.containsKey(gapValue-value)) {
+				result+=gap.get(gapValue-value);
+			}
+
 			gap.put(gapValue, gap.getOrDefault(gapValue, 0L) + 1);
 		}
-		// key = value - sum
-		// key + key대응 = value
-		// key 대응 = value - key;
-
-
-		long result = gap.getOrDefault(0L, 0L);
-
-		for(long key : gap.keySet()) {
-			long abKey = key - value;
-			if (gap.containsKey(abKey)) {
-				result +=  gap.get(key) * gap.get(abKey);
-			}
-			gap.put(key,0L);
-		}
-
 
 		bw.write(result + "");
 
