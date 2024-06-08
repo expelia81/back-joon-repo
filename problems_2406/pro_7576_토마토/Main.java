@@ -1,6 +1,7 @@
 package problems_2406.pro_7576_토마토;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -17,39 +18,40 @@ public class Main {
 
 		/* 배열 필요한 경우 */
 		int[][] tomatoes = new int[y][x];
+		int[][] resultTomatoes = new int[y][x];
 		int[][] days = new int[y][x];
+
+
 
 		for (int i = 0; i < y; i++) {
 			st = new StringTokenizer(br.readLine()," ");
+			Arrays.fill(days[i], Integer.MAX_VALUE);
 			for (int j = 0; j < x; j++) {
 				tomatoes[i][j]=Integer.parseInt(st.nextToken());
+				resultTomatoes[i][j]=tomatoes[i][j];
 			}
 		}
 		for (int i = 0; i < y; i++) {
 			for (int j = 0; j < x; j++) {
-				findRecursive(tomatoes, days, i, j, 0);
+				if (tomatoes[i][j]==1) {
+					findRecursive(resultTomatoes, days, i, j, 0);
+				}
 			}
-		}
-
-
-		for (int i = 0; i < y; i++) {
-			for (int j = 0; j < x; j++) {
-				System.out.print(tomatoes[i][j]+" ");
-			}
-			System.out.println();
 		}
 
 		int max = 0;
 		for (int i = 0; i < y; i++) {
 			for (int j = 0; j < x; j++) {
-				if (tomatoes[i][j]==0) {
+				if (resultTomatoes[i][j]==0) {
 					bw.write("-1");
 					bw.flush();
 					br.close();
 					bw.close();
 					return ;
 				}
-				max = Math.max(days[i][j], max);
+				if (days[i][j] != Integer.MAX_VALUE) {
+					max = Math.max(days[i][j], max);
+				}
 			}
 		}
 		bw.write(max+"");
@@ -62,29 +64,27 @@ public class Main {
 
 	public static void findRecursive(int[][] tomatoes, int[][] days, int y, int x, int day) {
 		if (tomatoes[y][x]==-1) return;
-		days[y][x]=Math.min(days[y][x],day);
-		if (day>4) return;
-//		System.out.println("dat : " + day);
-//		System.out.println("x : " + x + " / y : " +y);
+		if (days[y][x] <= day) {
+			return;
+		}
+		days[y][x]=day;
+		tomatoes[y][x]=1;
+//		if (day>4) return;
 
 		// visited가 없어서 계속 방문하고 호출해서 발생
 
 		// 지금 조건을 못탄다ㅣ...
 		//
 		if (y>0) {
-			if (!(days[y-1][x] > day+1))
 			findRecursive(tomatoes, days, y-1, x, day+1);
 		}
 		if (x>0) {
-			if (!(days[y][x-1] > day+1))
 			findRecursive(tomatoes, days, y, x-1, day+1);
 		}
 		if (x<tomatoes[0].length-1){
-			if (!(days[y][x+1] > day+1))
 			findRecursive(tomatoes, days, y, x+1, day+1);
 		}
 		if (y<tomatoes.length-1) {
-			if (!(days[y+1][x] > day+1))
 			findRecursive(tomatoes, days, y+1, x, day+1);
 		}
 	}
