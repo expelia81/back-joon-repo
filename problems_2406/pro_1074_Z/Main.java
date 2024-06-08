@@ -1,4 +1,4 @@
-package problems_2406.pro_1074;
+package problems_2406.pro_1074_Z;
 
 import java.io.*;
 import java.util.StringTokenizer;
