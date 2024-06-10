@@ -1,7 +1,6 @@
-package problems_2406.pro_24525_SKK문자열;
+package problems_2406_2.pro_24525_SKK문자열;
 
 import java.io.*;
-import java.util.StringTokenizer;
 
 public class Main {
 	public static void main(String[] args) throws IOException {

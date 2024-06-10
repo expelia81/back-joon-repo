@@ -1,4 +1,4 @@
-package problems_2406.pro_14476_최대공약수하나빼기;
+package problems_2406_2.pro_1904_01타일;
 
 import java.io.*;
 import java.util.StringTokenizer;
@@ -26,9 +26,5 @@ public class Main {
 		bw.flush();
 		br.close();
 		bw.close();
-	}
-	public static int gcd(int a, int b) {
-		if (b == 0) return a;
-		return gcd(b, a % b);
 	}
 }
