@@ -1,6 +1,8 @@
 package problems_2406_2.pro_1904_01타일;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -11,20 +13,38 @@ public class Main {
 
 		int n = Integer.parseInt(br.readLine());
 
-		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		/*
+			f(1)=1
+			p(2)=11,00
+			p(3)=111,100,001
+			p(4)=0011,0000,1100,1001,1111
 
-		/* 여러 정수 쓰는 경우 */
-		int x = Integer.parseInt(st.nextToken());
-		int y = Integer.parseInt(st.nextToken());
+			2차이날 때 앞에 00붙이는 경우
+			1차이날 때 앞에 1 붙이는 경우
 
-		/* 배열 필요한 경우 */
-		int[] arr = new int[n];
-		for (int j = 0; j < n; j++) {
-			arr[j]=Integer.parseInt(st.nextToken());
+			이렇게 2가지가 생김.
+			f(x)=f(x-1)+f(x-2) 로 보면 될 듯 함.
+		 */
+		list.add(1);
+		list.add(1);
+		list.add(2);
+
+		if (list.size()<=n){
+			for (int i = 3; i <= n; i++) {
+				f(i);
+			}
 		}
+		bw.write(String.valueOf(list.get(n)));
 
 		bw.flush();
 		br.close();
 		bw.close();
+	}
+
+	private static final List<Integer> list = new ArrayList<>();
+	private static int f(int a) {
+		int val =list.get(a-2)+list.get(a-1);
+		list.add(val%15746);
+		return list.get(a);
 	}
 }
