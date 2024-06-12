@@ -25,13 +25,17 @@ public class Main {
 			양쪽 면에서 시작하여, dp[n]+dp[reverseN]이 가장크다면, 두 값을 더한뒤, 중복값인 자기 자신을 빼면 가장 큰 값이 나온다.
 		 */
 		dp[0]=1;
+		dp[n-1]=1;
 		int max = 1;
 		for (int i = 1; i < n; i++) {
 			dp(i, arr, dp);
 		}
+		for (int i = n-1; i >= 0; i--) {
+			dpReverse(i, arr, dpReverse);
+		}
 
-		for (int a:dp) {
-			max = Math.max(max, a);
+		for (int i = 0; i < n; i++) {
+			max = Math.max(max, dp[i]+dpReverse[i]-1);
 		}
 
 		bw.write(String.valueOf(max));
@@ -44,6 +48,18 @@ public class Main {
 	private static int dp(int n, int[] arr, int[] dp) {
 		int max = 0;
 		for (int i = 0; i < n; i++) {
+			if (arr[i]<arr[n]) {
+				max = Math.max(max, dp[i]);
+			}
+		}
+		dp[n]=max+1;
+		return max;
+	}
+
+	private static int dpReverse(int n, int[] arr, int[] dp) {
+		int max = 0;
+
+		for (int i = dp.length-1; i >= 0; i--) {
 			if (arr[i]<arr[n]) {
 				max = Math.max(max, dp[i]);
 			}
