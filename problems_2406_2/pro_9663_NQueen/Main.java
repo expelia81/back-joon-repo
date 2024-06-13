@@ -43,8 +43,7 @@ public class Main {
 		bw.close();
 	}
 
-	private static int recursive(int i, int j, int n) {
-//		if ()
+	private static int recursive(int i, int j, int now) {
 		return 0;
 	}
 

@@ -24,8 +24,7 @@ public class Main {
 		}
 
 		for (int i = 0; i < n; i++) {
-			System.out.println(i+" 번째 진입!");
-			recursive(i,n,sum,arr[i],arr);
+			recursive(i,n,sum,0,arr,true);
 		}
 
 
@@ -36,15 +35,17 @@ public class Main {
 		bw.close();
 	}
 
-	static void recursive(int i, int n, int sum, int nowSum, int[] arr) {
-		if (nowSum==sum) {
-			System.out.println(i + " / nowsum : "+nowSum);
-			result++;
+	static void recursive(int i, int n, int sum, int nowSum, int[] arr, boolean pass) {
+		if (pass) {
+			nowSum+=arr[i];
+			if (nowSum==sum) {
+				result++;
+			}
 		}
 
-		if (i<n) {
-			recursive(i+1,n,sum,nowSum+arr[i], arr);
-			recursive(i+1,n,sum,nowSum, arr);
+		if (i<n-1) {
+			recursive(i+1,n,sum,nowSum, arr, true);
+			recursive(i+1,n,sum,nowSum, arr, false);
 		}
 	}
 }
