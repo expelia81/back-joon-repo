@@ -8,7 +8,7 @@ public class Main {
 	static int limit; // 최대 갯수
 	static int count; // 현재 카운트되고있는 빈칸 갯수
 	static int n;
-//	static int result;
+	static int result;
 	public static void main(String[] args) throws IOException {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -21,12 +21,12 @@ public class Main {
 
 		arr = new int[n][n];
 		limit = n*n;
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				System.out.print(arr[i][j]+" ");
-			}
-			System.out.println();
-		}
+//		for (int i = 0; i < n; i++) {
+//			for (int j = 0; j < n; j++) {
+//				System.out.print(arr[i][j]+" ");
+//			}
+//			System.out.println();
+//		}
 //		for (int i = 0; i < n; i++) {
 //			for (int j = 0; j < n; j++) {
 //				count=0;
@@ -34,7 +34,8 @@ public class Main {
 //			}
 //		}
 ;
-		System.out.println("result : "+count);
+		recursive(0);
+		System.out.println("result : "+result);
 
 
 
@@ -43,18 +44,35 @@ public class Main {
 		bw.close();
 	}
 
-	private static int recursive(int i, int j, int now) {
-		return 0;
+	private static void recursive(int count) {
+		System.out.println("count : " + count);
+		if (count==n) {
+			result++;
+			return ;
+		};
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if (plusCount(i,j)) {
+					recursive(count+1);
+					minusCount(i,j);
+				} else {
+					minusCount(i,j);
+				}
+			}
+		}
 	}
 
-	public static void plusCount(int i, int j) {
-
+	/**
+	 * 현재는 isPass가 false인 경우가 통과되지 않고있는 듯 함.
+	 */
+	public static boolean plusCount(int i, int j) {
+		boolean isPass=true;
 		for (int k = 0; k < n; k++) {
-			if (arr[k][j]==0) {
-				count++;
+			if (arr[k][j]!=0) {
+				isPass=false;
 			}
-			if (arr[i][k]==0) {
-				count++;
+			if (arr[i][k]!=0) {
+				isPass=false;
 			}
 			arr[k][j]++;
 			arr[i][k]++;
@@ -66,8 +84,9 @@ public class Main {
 			tempy--;
 		}
 		while (tempy<n && tempx<n) {
-			if (arr[tempy][tempx]==0) {
-				count++;
+			if (arr[tempy][tempx]!=0) {
+				System.out.println("false");
+				isPass=false;
 			}
 			arr[tempy][tempx]++;
 			tempx++;
@@ -84,9 +103,10 @@ public class Main {
 			tempy++;
 		}
 
-		while (tempx<n && tempy>=0){
-			if (arr[tempy][tempx]==0) {
-				count++;
+		while (tempx<n && tempy>=0 && tempy<n && tempx>=0){
+			System.out.println("tempx : "+tempx + " / tempy : "+tempy);
+			if (arr[tempy][tempx]!=0) {
+				isPass=false;
 			}
 			arr[tempy][tempx]++;
 			tempx++;
@@ -94,6 +114,7 @@ public class Main {
 		}
 
 		arr[i][j]-=3;
+		return isPass;
 	}
 	public static void minusCount(int i, int j) {
 
@@ -132,7 +153,7 @@ public class Main {
 			tempy++;
 		}
 
-		while (tempx<n && tempy>=0){
+		while (tempx<n && tempy>=0 && tempy<n && tempx>=0){
 			if (arr[tempy][tempx]==0) {
 				count++;
 			}
