@@ -1,4 +1,4 @@
-package problems_2406_2.pro_2141_우체국;
+package problems_2406_2.pro_2141_우체국_미해결;
 
 import java.io.*;
 import java.util.Arrays;
