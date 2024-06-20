@@ -8,10 +8,11 @@ public class Main {
 		BitSet bitSet = new BitSet(5);
 
 		String s ="""
-						\\    /\\
-						 )  ( ')
-						(  /  )
-						 \\(__)|
+						|\\_/|
+						|q p|   /}
+						( 0 )""\"\\
+						|"^"`    |
+						||_/=\\\\__|
 						""";
 		System.out.println(s);
 	}
