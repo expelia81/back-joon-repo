@@ -8,6 +8,7 @@ public class Main {
 		BitSet bitSet = new BitSet(5);
 
 		String s ="""
+      
 						|\\_/|
 						|q p|   /}
 						( 0 )""\"\\
