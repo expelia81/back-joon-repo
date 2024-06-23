@@ -1,4 +1,4 @@
-package problems_2406_2.pro_2141_우체국_미해결;
+package problems_2406_2.pro_2141_우체국_미해결.second;
 
 import java.io.*;
 import java.util.Arrays;
@@ -38,7 +38,6 @@ public class Main {
 
 		/* 배열 필요한 경우 */
 		Node[] arr = new Node[n];
-//		arr[0]=new Node(0,0);
 		for (int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
 
@@ -51,42 +50,18 @@ public class Main {
 		}
 		Arrays.sort(arr, Comparator.comparingInt(o -> o.point));
 
-		/*
-		  최초 단계에서, sum을 한 번은 계산하도록 한다.
-		  0번째에서부터 시작, 1칸씩 이동할 때마다
-		  left, right의 합이 오히려 높아지는 순간, 바로 그 직전점이 최고점이다.
-		 */
-
-		// 최초 거리합을 0번 인덱스 기준으로 재정립
-		distanceHumans -= (long) arr[0].point * rightHuman;
-		rightHuman-=arr[0].humans;
-		leftHuman+=arr[0].humans;
-
-		// 최저 거리가 되는 값의 크기로 할 것이다.
-		long resultDistance = distanceHumans;
-		long resultIndex=arr[0].point;
-
 		// 1번 인덱스부터 시작한다. i-1번째 포인트와 i번째 포인트의 거리를 잰다.
-		for (int i = 1; i < n; i++) {
-			/*
-			  i-1번째 포인트와 i번째 포인트에서의 거리를 잰다.
-			 */
+		for (int i = 0; i < n; i++) {
 			Node node= arr[i];
-			int distanceDifference = node.point - arr[i-1].point;
-			// 빼기 전에 distanceHuman을 계산한다.
-			// 오른 쪽으로 이동하므로, 우측 사람들이 줄어드는 만큼 왼쪽 사람들 거리가 커진다.
-			distanceHumans -= (long) distanceDifference * rightHuman;
-			distanceHumans += (long) distanceDifference * leftHuman;
-			// 오른쪽으로 이동하므로, 우측 사람들 수를 줄이고, 좌측 사람들 수를 늘린다.
 			leftHuman+=node.humans;
 			rightHuman-=node.humans;
 //			System.out.println("distanceHumans: " + distanceHumans + " / resultDistance: " + resultDistance);
-			if (resultDistance>distanceHumans) {
-				resultDistance=distanceHumans;
-				resultIndex=node.point;
+			if (leftHuman>=rightHuman) {
+				bw.write(String.valueOf(node.point));
+				break;
 			}
 		}
-		bw.write(String.valueOf(resultIndex));
+
 
 		bw.flush();
 		br.close();
