@@ -5,16 +5,10 @@ import java.util.BitSet;
 public class Main {
 	public static void main(String[] args) {
 
-		BitSet bitSet = new BitSet(5);
+		long s = Long.MAX_VALUE;
+		String t = "1,000,000,000,000,000,000".replaceAll(",","");
 
-		String s ="""
-      
-						|\\_/|
-						|q p|   /}
-						( 0 )""\"\\
-						|"^"`    |
-						||_/=\\\\__|
-						""";
 		System.out.println(s);
+		System.out.println(t);
 	}
 }
