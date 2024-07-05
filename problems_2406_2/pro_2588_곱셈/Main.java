@@ -12,14 +12,18 @@ public class Main {
 		int n = Integer.parseInt(br.readLine());
 		int m = Integer.parseInt(br.readLine());
 
-		int a = m % 10;
-		int b = (m % 100) / 10;
-		int c = m / 100;
-
-		bw.write(n * a + "\n");
-		bw.write(n * b + "\n");
-		bw.write(n * c + "\n");
-		bw.write(n * m + "\n");
+		if (n>0 && m>0) {
+			System.out.println("1");
+		}
+		if (n>0 && m<0) {
+			System.out.println("4");
+		}
+		if (n<0 && m<0) {
+			System.out.println("3");
+		}
+		if (n<0 && m>0) {
+			System.out.println("2");
+		}
 
 		bw.flush();
 		br.close();
