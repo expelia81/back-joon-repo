@@ -1,4 +1,4 @@
-package problems_2407.pro_2098_외판원순회;
+package problems_2407.pro_2098_외판원순회_미완;
 
 import java.io.*;
 import java.util.BitSet;
