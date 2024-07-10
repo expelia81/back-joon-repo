@@ -2,7 +2,10 @@ package sample.장난감;
 
 import java.io.*;
 import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.List;
+import java.util.StringTokenizer;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
@@ -11,32 +14,18 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-		BigInteger n = new BigInteger(st.nextToken());
-		BigInteger m = new BigInteger(st.nextToken());
-
-		// 나눈 값을 먼저 찾아라.
-		bw.write(n.divide(m) +"\n");
-		// 나머지 값을 찾아라.
-		bw.write(n.mod(m).toString());
+		BigInteger n = new BigInteger(br.readLine());
+		BigInteger m = new BigInteger(br.readLine());
 
 
-		List<Integer> list;
-
-		list = new ArrayList<>();
-
-		ArrayList<Integer> list2 = new ArrayList<>();
-
-		list = new LinkedList<Integer>();
-
-
-
+		System.out.println(n.add(m));
+		System.out.println(n.subtract(m));
+		System.out.println(n.multiply(m));
 
 
 		bw.flush();
 		br.close();
 		bw.close();
 	}
-
 
 }
