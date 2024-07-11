@@ -2,10 +2,7 @@ package sample.장난감;
 
 import java.io.*;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
@@ -14,13 +11,26 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-		BigInteger n = new BigInteger(br.readLine());
-		BigInteger m = new BigInteger(br.readLine());
 
+		int n = Integer.parseInt(br.readLine());
 
-		System.out.println(n.add(m));
-		System.out.println(n.subtract(m));
-		System.out.println(n.multiply(m));
+		int[] arr = new int[n];
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		for (int i = 0; i < n; i++) {
+			int temp = Integer.parseInt(st.nextToken());
+			arr[i]=temp;
+		}
+
+		int result = 0;
+		int target = Integer.parseInt(br.readLine());
+		for (int i = 0; i < n; i++) {
+			if (arr[i]==target) {
+				result++;
+			}
+		}
+
+		bw.write(result+"");
+
 
 
 		bw.flush();
