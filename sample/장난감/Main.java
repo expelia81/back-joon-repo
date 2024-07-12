@@ -11,25 +11,14 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
+		// 자바 백준 2739번 구구단
 
 		int n = Integer.parseInt(br.readLine());
 
-		int[] arr = new int[n];
-		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-		for (int i = 0; i < n; i++) {
-			int temp = Integer.parseInt(st.nextToken());
-			arr[i]=temp;
+		for (int i = 1; i < 10; i++) {
+			bw.write(n + " * " + i + " = " + n * i + "\n");
 		}
 
-		int result = 0;
-		int target = Integer.parseInt(br.readLine());
-		for (int i = 0; i < n; i++) {
-			if (arr[i]==target) {
-				result++;
-			}
-		}
-
-		bw.write(result+"");
 
 
 
