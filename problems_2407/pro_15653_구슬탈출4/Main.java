@@ -19,6 +19,15 @@ public class Main {
 		int[] red=new int[2];
 		int turn=0;
 
+		@Override
+		public String toString() {
+			return "Node{" +
+							"blue=" + Arrays.toString(blue) +
+							", red=" + Arrays.toString(red) +
+							", turn=" + turn +
+							'}';
+		}
+
 		public Node(Node origin) {
 			blue = Arrays.copyOf(origin.blue,2);
 			red = Arrays.copyOf(origin.red,2);
@@ -33,24 +42,24 @@ public class Main {
 //				System.out.println("redTurn : "+redTurn + " blue turn : "+blueTurn + " realTurn : "+turn);
 //				System.out.println("move..! red : "+red[0]+","+red[1] + " blue : "+blue[0]+","+blue[1]);
 				int redMove=0;
-				if (redTurn==11) {
+				if (redTurn==Integer.MAX_VALUE) {
 					redMove=redMove(i);
 					if (redMove==2) {
 //						System.out.println("red goal!!!, red : "+red[0]+","+red[1] + " blue : "+blue[0]+","+blue[1] + " realTurn : "+turn);
 						Main.redTurn=turn;
-						red[0]=-1;
-						red[1]=-1;
+//						red[0]=-1;
+//						red[1]=-1;
 					}
 				}
 				int blueMove=0;
-				if (blueTurn==11) {
+				if (blueTurn==Integer.MAX_VALUE) {
 					blueMove=blueMove(i);
 //					System.out.println("blue is keep going...  blueMove : "+blueMove+" -- "+"red : "+red[0]+","+red[1] + " blue : "+blue[0]+","+blue[1]);
 					if (blueMove==2) {
 //						System.out.println("blue goal..., red : "+red[0]+","+red[1] + " blue : "+blue[0]+","+blue[1]);
 						Main.blueTurn=turn;
-						blue[0]=-1;
-						blue[1]=-1;
+//						blue[0]=-1;
+//						blue[1]=-1;
 					}
 				}
 				if ((redMove==0) && (blueMove==0)) {
@@ -63,38 +72,47 @@ public class Main {
 //			x,y가 0이면 더이상 진행안하도록 해야함.
 			int x=dx[i]+red[0];
 			int y=dy[i]+red[1];
-			if (x >= 0 && y >= 0 && x < arr[0].length && y<arr.length)
-			if (arr[y][x]!='#' && !(blue[0]==x && blue[1]==y)) {
-				red[0]=x;
-				red[1]=y;
+			if (x >= 0 && y >= 0 && x < arr[0].length && y<arr.length){
 				if (arr[y][x]=='O') {
+					red[0]=x;
+					red[1]=y;
 					return 2;
 				}
-				return 1;
+				if (arr[y][x]!='#' && !(blue[0]==x && blue[1]==y)) {
+					red[0]=x;
+					red[1]=y;
+					return 1;
+				}
 			}
 			return 0;
 		}
 		int blueMove(int i) {
 			int x=dx[i]+blue[0];
 			int y=dy[i]+blue[1];
-			if (x >= 0 && y >= 0 && x < arr[0].length && y<arr.length)
-			if (arr[y][x]!='#' && !(red[0]==x && red[1]==y)) { // 이동할 수 없는 곳인지 판정하는 부분에서 막힌다!!!
-				blue[0]=x;
-				blue[1]=y;
+			if (x >= 0 && y >= 0 && x < arr[0].length && y<arr.length){
 				if (arr[y][x]=='O') {
+					blue[0]=x;
+					blue[1]=y;
 					return 2;
 				}
-				return 1;
+				if (arr[y][x]!='#' && !(red[0]==x && red[1]==y)) { // 이동할 수 없는 곳인지 판정하는 부분에서 막힌다!!!
+					blue[0]=x;
+					blue[1]=y;
+					return 1;
+				}
 			}
 			return 0;
 		}
 	}
+
+	static boolean[][][][][] isVisited = new boolean[10][10][10][10][4];
 	static int[] dx={-1,1,0,0};
 	static int[] dy={0,0,-1,1};
+	static String[] direction = {"L","R","U","D"};
 	static char[][] arr;
 	static Queue<Node> queue = new ArrayDeque<>();
-	static int blueTurn=11;
-	static int redTurn=11;
+	static int blueTurn=Integer.MAX_VALUE;
+	static int redTurn=Integer.MAX_VALUE;
 	static int isEnd=Integer.MAX_VALUE;
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -147,29 +165,28 @@ public class Main {
 		while (!queue.isEmpty()) {
 			Node node = queue.poll();
 //			System.out.println(node.red[0]+","+node.red[1]);
+//			System.out.println(node);
 			for (int i = 0; i < 4; i++) {
 				Node leaf = new Node(node);
-				if (node.turn > 9) {
-//					if (redTurn==blueTurn) {
-//						return ;
-//					}
-					return ;
+				if (isVisited[leaf.red[0]][leaf.red[1]][leaf.blue[0]][leaf.blue[1]][i]) {
+//					System.out.println(direction[i]+" 방향은 이미 탐색했으므로 생략합니다.");
+					continue;
+				} else {
+//					System.out.println(direction[i]+" 방향 탐색을 시작합니다.");
+					isVisited[leaf.red[0]][leaf.red[1]][leaf.blue[0]][leaf.blue[1]][i]=true;
 				}
-//				System.out.print("now leaf : ");
-//				System.out.print(" --- red : "+leaf.red[0] +","+leaf.red[1]);
-//				System.out.print(" --- blue : "+leaf.blue[0] +","+leaf.blue[1]);
-//				System.out.println();
 				leaf.move(i);
 
 
-				if (redTurn!=11  && blueTurn==11) {
+				if (redTurn!=Integer.MAX_VALUE  && blueTurn==Integer.MAX_VALUE) {
+//					isEnd=leaf.turn;
 					isEnd=Math.min(leaf.turn,isEnd);
-				} else if (blueTurn!=11) {
+				} else if (blueTurn!=Integer.MAX_VALUE) {
 				} else {
 					queue.add(leaf);
 				}
-				redTurn=11;
-				blueTurn=11;
+				redTurn=Integer.MAX_VALUE;
+				blueTurn=Integer.MAX_VALUE;
 
 			}
 		}

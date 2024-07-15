@@ -11,14 +11,10 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-		// 자바 백준 2739번 구구단
-
 		int n = Integer.parseInt(br.readLine());
+		int m = Integer.parseInt(br.readLine());
 
-		for (int i = 1; i < 10; i++) {
-			bw.write(n + " * " + i + " = " + n * i + "\n");
-		}
-
+		System.out.println((n+m));
 
 
 
