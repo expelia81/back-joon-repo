@@ -114,7 +114,7 @@ public class Main {
 	}
 
 	static int comparator(int[] a, int[] b) {
-		for (int i = 49; i >= 0; i--) {
+		for (int i = 51; i >= 0; i--) {
 			if (a[i]!=0 || b[i]!=0) {
 				int aVal = a[i];
 				int bVal = b[i];
