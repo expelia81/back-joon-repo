@@ -11,10 +11,13 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-		int n = Integer.parseInt(br.readLine());
-		int m = Integer.parseInt(br.readLine());
+		StringTokenizer st = new StringTokenizer(br.readLine());
 
-		System.out.println((n+m));
+		BigInteger integer = new BigInteger(st.nextToken());
+		BigInteger integer2 = new BigInteger(st.nextToken());
+
+		System.out.println(integer.add(integer2));
+
 
 
 
@@ -22,5 +25,4 @@ public class Main {
 		br.close();
 		bw.close();
 	}
-
 }
