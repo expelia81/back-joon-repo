@@ -13,11 +13,10 @@ public class Main {
 
 		StringTokenizer st = new StringTokenizer(br.readLine());
 
-		BigInteger integer = new BigInteger(st.nextToken());
-		BigInteger integer2 = new BigInteger(st.nextToken());
+		int left = Integer.parseInt(st.nextToken()) * Integer.parseInt(st.nextToken());
+		int right = Integer.parseInt(st.nextToken()) * Integer.parseInt(st.nextToken()) * Integer.parseInt(st.nextToken());
 
-		System.out.println(integer.add(integer2));
-
+		bw.write(String.valueOf(left-right));
 
 
 
