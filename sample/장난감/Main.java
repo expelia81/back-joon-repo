@@ -11,24 +11,26 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-//		StringTokenizer st = new StringTokenizer(br.readLine());
 
-//		int a = Integer.parseInt(st.nextToken());
-//		int b = Integer.parseInt(st.nextToken());
-//
-//		int result = Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken());
-//		int inputResult = Integer.parseInt(st.nextToken());
+		//1356번 유진수
 
-		//이 별은 무슨색일까
+		String n = br.readLine();
+		for (int i = 0; i < n.length(); i++) {
+			if (n.charAt(i)=='0') {
+				bw.write("NO");
+				bw.flush();
+				br.close();
+				bw.close();
+				return;
+			}
+
+		}
 
 
-		String s = """
-						#  # #### #### #  #
-						#### #  # #  # # #
-						#### #  # #  # # #
-						#  # #### #### #  #
-						""";
-		bw.write(s);
+
+
+
+
 
 
 
