@@ -10,10 +10,6 @@ public class Main {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		StringTokenizer st = null;
-
-
-		/* 배열 필요한 경우 */
-		int[] arr = new int[3];
 		while (true){
 			st = new StringTokenizer(br.readLine(), " ");
 			int a=Integer.parseInt(st.nextToken());

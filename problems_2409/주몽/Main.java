@@ -1,8 +1,7 @@
-package sample;
+package problems_2409.주몽;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -12,18 +11,35 @@ public class Main {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		int n = Integer.parseInt(br.readLine());
+		int m = Integer.parseInt(br.readLine());
 
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
-		/* 여러 정수 쓰는 경우 */
-		int x = Integer.parseInt(st.nextToken());
-		int y = Integer.parseInt(st.nextToken());
-
+		int left = 0;
+		int right = n-1;
 		/* 배열 필요한 경우 */
 		int[] arr = new int[n];
 		for (int i = 0; i < n; i++) {
 			arr[i]=Integer.parseInt(st.nextToken());
 		}
+
+		Arrays.sort(arr);
+
+		int result = 0;
+		while (left<right) {
+			int size = arr[left] + arr[right];
+			if (size == m) {
+				result++;
+				left++;
+				right--;
+			} else if (size > m) {
+				right--;
+			} else
+			{
+				left++;
+			}
+		}
+		bw.write(String.valueOf(result));
 
 		bw.flush();
 		br.close();

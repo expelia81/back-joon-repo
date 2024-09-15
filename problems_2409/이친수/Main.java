@@ -1,8 +1,6 @@
-package sample;
+package problems_2409.이친수;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -13,17 +11,17 @@ public class Main {
 
 		int n = Integer.parseInt(br.readLine());
 
-		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		long[][] dp = new long[n][2];
 
-		/* 여러 정수 쓰는 경우 */
-		int x = Integer.parseInt(st.nextToken());
-		int y = Integer.parseInt(st.nextToken());
+		dp[0][1]=1;
+		dp[0][0]=0;
 
-		/* 배열 필요한 경우 */
-		int[] arr = new int[n];
-		for (int i = 0; i < n; i++) {
-			arr[i]=Integer.parseInt(st.nextToken());
+		for (int i = 1; i < n; i++) {
+			dp[i][0] = dp[i-1][0] + dp[i-1][1];
+			dp[i][1] = dp[i-1][0];
 		}
+		bw.write(String.valueOf(dp[n-1][0]+dp[n-1][1]));
+
 
 		bw.flush();
 		br.close();

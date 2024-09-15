@@ -1,44 +1,35 @@
 package sample.장난감;
 
 import java.io.*;
-import java.math.BigInteger;
 import java.util.*;
 
 public class Main {
-	public static void main(String[] args) throws IOException {
 
+	static int max;
+	static int n;
+	static int[] arr;
+	static int[] count;
+	public static void main(String [] args) throws IOException {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
+		 n = Integer.parseInt(br.readLine());
 
-		//1356번 유진수
+	int k = 64;
 
-		String n = br.readLine();
-		for (int i = 0; i < n.length(); i++) {
-			if (n.charAt(i)=='0') {
-				bw.write("NO");
-				bw.flush();
-				br.close();
-				bw.close();
-				return;
-			}
-
+	int count = 0;
+	while (n>0) {
+		if (n>=k) {
+			n-=k;
+			count++;
 		}
-
-
-
-
-
-
-
-
-
-
-
-		bw.flush();
-		br.close();
-		bw.close();
+		k = k>>1;
 	}
+
+	System.out.println(count);
+
+	}
+
 
 }

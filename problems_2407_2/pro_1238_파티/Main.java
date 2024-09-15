@@ -1,8 +1,6 @@
-package sample;
+package problems_2407_2.pro_1238_파티;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -29,5 +27,4 @@ public class Main {
 		br.close();
 		bw.close();
 	}
-
 }

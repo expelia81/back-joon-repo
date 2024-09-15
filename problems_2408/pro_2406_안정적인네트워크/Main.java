@@ -1,8 +1,6 @@
-package sample;
+package problems_2408.pro_2406_안정적인네트워크;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -22,12 +20,12 @@ public class Main {
 		/* 배열 필요한 경우 */
 		int[] arr = new int[n];
 		for (int i = 0; i < n; i++) {
-			arr[i]=Integer.parseInt(st.nextToken());
+			arr[i] = Integer.parseInt(st.nextToken());
+			
+
+			bw.flush();
+			br.close();
+			bw.close();
 		}
-
-		bw.flush();
-		br.close();
-		bw.close();
 	}
-
 }
